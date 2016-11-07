@@ -1,0 +1,23 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <link rel="stylesheet" href="{{ '/css/webcamp.min.css' | prepend: site.url }}">
+  <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl }}">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+  <!-- 1. Load libraries -->
+  <!-- Polyfill(s) for older browsers -->
+  <script src="{{'/node_modules/core-js/client/shim.min.js' | prepend: site.baseurl}}"></script>
+  <script src="{{'/node_modules/zone.js/dist/zone.js' | prepend: site.baseurl}}"></script>
+  <script src="{{'/node_modules/reflect-metadata/Reflect.js' | prepend: site.baseurl}}"></script>
+  <script src="{{'/node_modules/systemjs/dist/system.src.js' | prepend: site.baseurl}}"></script>
+  <!-- 2. Configure SystemJS -->
+  <script src="systemjs.config.js"></script>
+  <script>
+    System.import('app').catch(function(err){ console.error(err); });
+  </script>
+</head>
